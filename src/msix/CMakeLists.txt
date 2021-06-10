@@ -21,6 +21,7 @@ if(MSIX_PACK)
         "PackPackage"
         "PackBundle"
         "SignPackage"
+        "AttachSignature"
     )
 endif()
 

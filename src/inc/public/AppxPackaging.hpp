@@ -1796,6 +1796,14 @@ MSIX_API HRESULT STDMETHODCALLTYPE PackPackage(
     LPCSTR outputPackage
 ) noexcept;
 
+MSIX_API HRESULT STDMETHODCALLTYPE PackBundle(
+    MSIX_BUNDLE_OPTIONS bundleOptions,
+    char* directoryPath,
+    char* outputBundle,
+    char* mappingFile,
+    char* version
+) noexcept;
+
 MSIX_API HRESULT STDMETHODCALLTYPE SignPackage(
     MSIX_SIGNING_OPTIONS signingOptions,
     LPCSTR package,
@@ -1804,12 +1812,9 @@ MSIX_API HRESULT STDMETHODCALLTYPE SignPackage(
     LPCSTR privateKey
 ) noexcept;
 
-MSIX_API HRESULT STDMETHODCALLTYPE PackBundle(
-    MSIX_BUNDLE_OPTIONS bundleOptions,
-    char* directoryPath,
-    char* outputBundle,
-    char* mappingFile,
-    char* version
+MSIX_API HRESULT STDMETHODCALLTYPE AttachSignature(
+    LPCSTR package,
+    LPCSTR signature
 ) noexcept;
 
 #endif // MSIX_PACK
