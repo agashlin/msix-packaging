@@ -45,13 +45,6 @@ else()
         -fno-math-errno -fno-unroll-loops -fmerge-all-constants)
 endif()
 
-set(CONDITIONAL_CONF "")
-
-if(NOT MSIX_PACK)
-    set(CONDITIONAL_CONF "${CONDITIONAL_CONF}
-#define OPENSSL_NO_DES")
-endif()
-
 file( READ "${OpenSLL_INCLUDE_PATH}/openssl/opensslconf.h.in" CONF )
 set( CONF "
 #define OPENSSL_NO_GMP
@@ -69,6 +62,7 @@ set( CONF "
 #define OPENSSL_NO_BF
 #define OPENSSL_NO_IDEA
 #define OPENSSL_NO_ENGINE
+#define OPENSSL_NO_DES
 #define OPENSSL_NO_MDC2
 #define OPENSSL_NO_SEED
 #define OPENSSL_NO_DEPRECATED
@@ -92,9 +86,6 @@ set( CONF "
 #define OPENSSL_NO_CMS
 #define OPENSSL_NO_OCSP
 #define OPENSSL_NO_SRP
-
-${CONDITIONAL_CONF}
-
 ${CONF}" )
 file( WRITE "${OpenSLL_INCLUDE_PATH}/openssl/opensslconf.h" "${CONF}" )
 
